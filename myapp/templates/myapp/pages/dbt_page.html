@@ -1,0 +1,37 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - DBT Verification{% endblock %}
+
+{% block content %}
+<div id="dbtPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('homePage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+        <h2 class="text-2xl font-bold text-gray-800">🏦 DBT Account Verification</h2>
+    </div>
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-md mx-auto">
+        <form id="dbtForm">
+            {% csrf_token %} <div class="mb-4">
+                <label class="block text-gray-700 font-semibold mb-2">Aadhaar Number</label>
+                <input type="text" id="dbtAadhaar"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="1234 5678 9012" maxlength="14" required>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 font-semibold mb-2">Bank Account Number</label>
+                <input type="text" id="bankAccount"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    placeholder="Enter account number" required>
+            </div>
+            <button type="submit"
+                class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition-colors">Check
+                DBT Status</button>
+        </form>
+        <div id="dbtResult" class="hidden mt-6 p-4 rounded-lg">
+            <h3 class="font-semibold mb-2">Verification Result:</h3>
+            <p id="dbtResultText"></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

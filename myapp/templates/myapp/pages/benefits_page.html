@@ -1,0 +1,56 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Benefits of Organic Farming{% endblock %}
+
+{% block content %}
+<div id="benefitsPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('organicMainPage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+        <h2 class="text-2xl font-bold text-gray-800">⭐ Benefits of Organic Farming</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-green-600">🌱 Environmental Benefits</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li>• Improved soil health and fertility</li>
+                <li>• Reduced water pollution</li>
+                <li>• Enhanced biodiversity</li>
+                <li>• Lower carbon footprint</li>
+                <li>• Natural pest control ecosystem</li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-blue-600">💰 Economic Benefits</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li>• Premium prices (20-40% higher)</li>
+                <li>• Reduced input costs over time</li>
+                <li>• Government subsidies and support</li>
+                <li>• Export opportunities</li>
+                <li>• Sustainable long-term income</li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-purple-600">🏥 Health Benefits</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li>• No harmful chemical residues</li>
+                <li>• Higher nutritional value</li>
+                <li>• Better taste and quality</li>
+                <li>• Safer for farm workers</li>
+                <li>• Reduced health risks</li>
+            </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-xl font-semibold mb-4 text-orange-600">🚜 Farming Benefits</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li>• Improved soil structure</li>
+                <li>• Natural disease resistance</li>
+                <li>• Reduced dependency on inputs</li>
+                <li>• Sustainable farming practices</li>
+                <li>• Knowledge-based agriculture</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

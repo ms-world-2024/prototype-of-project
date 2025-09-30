@@ -1,0 +1,147 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Home{% endblock %}
+
+{% block content %}
+<div id="homePage" class="page">
+    <div class="weather-card text-white p-6 rounded-xl mb-6 shadow-lg">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-bold"> 🌤️ Weather Forecast</h2>
+            <button id="toggleForecast"
+                class="bg-white bg-opacity-20 px-3 py-1 rounded-lg text-sm hover:bg-opacity-30 transition-all">10-Day
+                View</button>
+        </div>
+        <div id="todayWeather" class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+                <p class="text-3xl font-bold" id="temperature">23°C</p>
+                <p class="text-lg" id="condition">Light Rain</p>
+                <p class="text-sm opacity-90" id="location">Delhi, India</p>
+            </div>
+            <div class="text-right">
+                <p>Humidity: <span id="humidity">45%</span></p>
+                <p>Wind: <span id="windSpeed">13 km/h</span></p>
+                <p>Rainfall: <span id="rainfall">0mm</span></p>
+                <p class="text-xs opacity-75 mt-2">UV Index: <span id="uvIndex">7</span></p>
+            </div>
+        </div>
+        <div id="forecastView" class="hidden">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-2" id="weatherForecast">
+            </div>
+        </div>
+        <p id="lastUpdated" class="text-xs opacity-75 mt-2">Last updated: 12:06 am</p>
+    </div>
+
+    <div class="bg-white p-4 rounded-xl shadow-lg mb-6 text-center">
+        <button id="dbtPopupBtn"
+            onclick="showPage('dbtPage')"
+            class="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+            🏦 Check DBT Status
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+        <div class="agriculture-card bg-white p-6 rounded-xl shadow-lg speakable">
+            <div class="text-4xl mb-4">🌱</div>
+            <h3 class="text-xl font-semibold mb-3 text-green-700">Soil Health Management</h3>
+            <p class="text-gray-600 text-sm mb-4">Maintain optimal soil pH (6.0-7.5) for better crop yields.
+                Regular soil testing helps identify nutrient deficiencies.</p>
+            <div class="bg-green-50 p-3 rounded-lg">
+                <p class="text-xs text-green-800"><strong>Tip:</strong> Add organic matter like compost to
+                    improve soil structure and water retention.</p>
+            </div>
+        </div>
+        <div class="agriculture-card bg-white p-6 rounded-xl shadow-lg speakable">
+            <div class="text-4xl mb-4">💧</div>
+            <h3 class="text-xl font-semibold mb-3 text-blue-700">Water Conservation</h3>
+            <p class="text-gray-600 text-sm mb-4">Drip irrigation can save up to 50% water compared to flood
+                irrigation while increasing crop yields.</p>
+            <div class="bg-blue-50 p-3 rounded-lg">
+                <p class="text-xs text-blue-800"><strong>Tip:</strong> Mulching reduces water evaporation and
+                    maintains soil moisture.</p>
+            </div>
+        </div>
+        <div class="agriculture-card bg-white p-6 rounded-xl shadow-lg speakable">
+            <div class="text-4xl mb-4">🔄</div>
+            <h3 class="text-xl font-semibold mb-3 text-purple-700">Crop Rotation Benefits</h3>
+            <p class="text-gray-600 text-sm mb-4">Rotating crops breaks pest cycles, improves soil fertility,
+                and reduces disease pressure naturally.</p>
+            <div class="bg-purple-50 p-3 rounded-lg">
+                <p class="text-xs text-purple-800"><strong>Tip:</strong> Follow legumes with cereals to utilize
+                    fixed nitrogen.</p>
+            </div>
+        </div>
+        <div class="agriculture-card bg-white p-6 rounded-xl shadow-lg speakable">
+            <div class="text-4xl mb-4">🐛</div>
+            <h3 class="text-xl font-semibold mb-3 text-red-700">Integrated Pest Management</h3>
+            <p class="text-gray-600 text-sm mb-4">Combine biological, cultural, and chemical methods for
+                sustainable pest control with minimal environmental impact.</p>
+            <div class="bg-red-50 p-3 rounded-lg">
+                <p class="text-xs text-red-800"><strong>Tip:</strong> Use beneficial insects like ladybugs to
+                    control aphids naturally.</p>
+            </div>
+        </div>
+        <div class="agriculture-card bg-white p-6 rounded-xl shadow-lg speakable">
+            <div class="text-4xl mb-4">🌡️</div>
+            <h3 class="text-xl font-semibold mb-3 text-orange-700">Climate Smart Farming</h3>
+            <p class="text-gray-600 text-sm mb-4">Adapt farming practices to climate change with
+                drought-resistant varieties and efficient resource use.</p>
+            <div class="bg-orange-50 p-3 rounded-lg">
+                <p class="text-xs text-orange-800"><strong>Tip:</strong> Use weather forecasts to plan
+                    irrigation and pest management.</p>
+            </div>
+        </div>
+        <div class="agriculture-card bg-white p-6 rounded-xl shadow-lg speakable">
+            <div class="text-4xl mb-4">📱</div>
+            <h3 class="text-xl font-semibold mb-3 text-indigo-700">Digital Agriculture</h3>
+            <p class="text-gray-600 text-sm mb-4">Use mobile apps, sensors, and satellite data for precision
+                farming and better decision making.</p>
+            <div class="bg-indigo-50 p-3 rounded-lg">
+                <p class="text-xs text-indigo-800"><strong>Tip:</strong> GPS-guided tractors reduce overlap and
+                    save fuel costs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-green-400 to-blue-500 text-white p-6 rounded-xl shadow-lg mb-6 speakable">
+        <h3 class="text-xl font-bold mb-4">🌟 Today's Farming Tips</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                <h4 class="font-semibold mb-2">Morning Task</h4>
+                <p class="text-sm">Check soil moisture levels before 8 AM for accurate readings</p>
+            </div>
+            <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                <h4 class="font-semibold mb-2">Weather Alert</h4>
+                <p class="text-sm">Light rain expected tomorrow - good time for transplanting</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl shadow-lg speakable">
+        <h3 class="text-xl font-semibold mb-4 text-gray-800">📈 Market Trends</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="text-center p-4 bg-green-50 rounded-lg">
+                <div class="text-2xl font-bold text-green-600">↗️ +15%</div>
+                <p class="text-sm text-gray-600">Organic Vegetables</p>
+            </div>
+            <div class="text-center p-4 bg-blue-50 rounded-lg">
+                <div class="text-2xl font-bold text-blue-600">→ Stable</div>
+                <p class="text-sm text-gray-600">Wheat Prices</p>
+            </div>
+            <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                <div class="text-2xl font-bold text-yellow-600">↗️ +8%</div>
+                <p class="text-sm text-gray-600">Rice Demand</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        updateWeather();
+        updateMarketPrices();
+    });
+</script>
+{% endblock %}

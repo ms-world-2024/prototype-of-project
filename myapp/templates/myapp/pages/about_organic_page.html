@@ -1,0 +1,40 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - About Organic Farming{% endblock %}
+
+{% block content %}
+<div id="aboutOrganicPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('organicMainPage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+        <h2 class="text-2xl font-bold text-gray-800">📖 About Organic Farming</h2>
+    </div>
+    <div class="bg-white p-8 rounded-xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-4 text-green-600">What is Organic Farming?</h3>
+        <p class="text-gray-700 mb-6">Organic farming is an agricultural method that relies on natural processes
+            and materials to grow crops without synthetic chemicals, pesticides, or genetically modified
+            organisms.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-green-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-green-800 mb-2">Key Principles</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• No synthetic pesticides or fertilizers</li>
+                    <li>• Soil health improvement</li>
+                    <li>• Biodiversity conservation</li>
+                    <li>• Natural pest management</li>
+                </ul>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-blue-800 mb-2">Certification Process</h4>
+                <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• 3-year transition period</li>
+                    <li>• Regular inspections</li>
+                    <li>• Documentation requirements</li>
+                    <li>• Certification maintenance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

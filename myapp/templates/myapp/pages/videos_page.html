@@ -1,0 +1,163 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Educational Videos{% endblock %}
+
+{% block content %}
+<div id="videosPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('organicMainPage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+        <h2 class="text-2xl font-bold text-gray-800">🎥 Telugu Educational Videos</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                <span class="text-4xl">🎬</span>
+            </div>
+            <h3 class="font-semibold mb-2">Organic Farming Basics</h3>
+            <p class="text-sm text-gray-600 mb-3">Introduction to organic farming principles and practices</p>
+            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                onclick="window.open('https://youtu.be/lDO0ET47Brc', '_blank')">▶ Play Video 1</button>
+            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm mt-2"
+                onclick="window.open('https://youtu.be/-3FGS3oQtsg', '_blank')">▶ Play Video 2</button>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                <span class="text-4xl">🎬</span>
+            </div>
+            <h3 class="font-semibold mb-2">Composting Techniques</h3>
+            <p class="text-sm text-gray-600 mb-3">Learn how to create nutrient-rich compost for your crops</p>
+            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                onclick="window.open('https://youtu.be/TbiR7M5a-SQ', '_blank')">▶ Play Video 1</button>
+            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm mt-2"
+                onclick="window.open('https://www.youtube.com/live/FSlRm8ZTfmo', '_blank')">▶ Play Video
+                2</button>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                <span class="text-4xl">🎬</span>
+            </div>
+            <h3 class="font-semibold mb-2">Natural Pest Control</h3>
+            <p class="text-sm text-gray-600 mb-3">Effective organic methods to control pests naturally</p>
+            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                onclick="window.open('https://youtu.be/swojd7FFUfg', '_blank')">▶ Play Video 1</button>
+            <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm mt-2"
+                onclick="window.open('https://youtu.be/XVqbWSyO-2Q', '_blank')">▶ Play Video 2</button>
+        </div>
+    </div>
+        <div class="flex items-center mb-6">
+            <button onclick="showPage('organicMainPage')"
+                class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+            <h2 class="text-2xl font-bold text-gray-800">🎥 Hindi Educational Videos (हिंदी)</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🎬</span>
+                </div>
+                <h3 class="font-semibold mb-2">Organic Farming Basics</h3>
+                <p class="text-sm text-gray-600 mb-3">Introduction to organic farming principles and practices
+                </p>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/7rktJrRG2e8', '_blank')">▶ Play 1</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/zgdIQyM__w4', '_blank')">▶ Play 2</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/8ulpy_GFLDk', '_blank')">▶ Play 3</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/xR2DPnyLEE0', '_blank')">▶ Play 4</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🎬</span>
+                </div>
+                <h3 class="font-semibold mb-2">Composting Techniques</h3>
+                <p class="text-sm text-gray-600 mb-3">Learn how to create nutrient-rich compost for your crops
+                </p>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/heTxEsrPVdQ', '_blank')">▶ Play 1</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/-eBrAm64fpg', '_blank')">▶ Play 2</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/qvwJpwBL-yg', '_blank')">▶ Play 3</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/xVO9bjuhB58', '_blank')">▶ Play 4</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🎬</span>
+                </div>
+                <h3 class="font-semibold mb-2">Natural Pest Control</h3>
+                <p class="text-sm text-gray-600 mb-3">Effective organic methods to control pests naturally</p>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/qTkp-9o9hH0', '_blank')">▶ Play 1</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/lH_8N9HRsys', '_blank')">▶ Play 2</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/RXNjGkJe7fY', '_blank')">▶ Play 3</button>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center mb-6">
+            <button onclick="showPage('organicMainPage')"
+                class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+            <h2 class="text-2xl font-bold text-gray-800">🎥 Punjabi Educational Videos (ਪੰਜਾਬੀ)</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🎬</span>
+                </div>
+                <h3 class="font-semibold mb-2">Organic Farming Basics</h3>
+                <p class="text-sm text-gray-600 mb-3">Introduction to organic farming principles and practices</p>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/-lmopDUnraE', '_blank')">▶ Play 1</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/MGH5IEf830Q', '_blank')">▶ Play 2</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/SRDJpfyhCYY', '_blank')">▶ Play 3</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🎬</span>
+                </div>
+                <h3 class="font-semibold mb-2">Composting Techniques</h3>
+                <p class="text-sm text-gray-600 mb-3">Learn how to create nutrient-rich compost for your crops</p>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/mZgr_GwfepE', '_blank')">▶ Play 1</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/FdoCWHZuPEA', '_blank')">▶ Play 2</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/xVO9bjuhB58', '_blank')">▶ Play 3</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/2pMFS-lgRZI', '_blank')">▶ Play 4</button>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="bg-gray-200 h-32 rounded-lg mb-4 flex items-center justify-center">
+                    <span class="text-4xl">🎬</span>
+                </div>
+                <h3 class="font-semibold mb-2">Natural Pest Control</h3>
+                <p class="text-sm text-gray-600 mb-3">Effective organic methods to control pests naturally</p>
+                <div class="grid grid-cols-2 gap-2 mt-2">
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/n45rHfqvfAk', '_blank')">▶ Play 1</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/KeOfTYL4t9Q', '_blank')">▶ Play 2</button>
+                    <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm"
+                        onclick="window.open('https://youtu.be/Z5kBpnoVJT0', '_blank')">▶ Play 3</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

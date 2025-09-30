@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Smart Farmer - Digital Agriculture Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+    <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
+</head>
+<body class="min-h-screen">
+
+    {# Google Translate Integration (from _header.html) #}
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <a href="{% url 'logout' %}" style="float:right; margin:10px; color:green; font-weight:bold;">
+        Logout
+    </a>
+
+    {# Header (from _header.html) #}
+    <header class="bg-green-600 text-white p-4 shadow-lg">
+        <div class="flex justify-between items-center max-w-6xl mx-auto">
+            <button id="menuBtn" class="hamburger p-2 hover:bg-green-700 rounded-lg transition-colors">
+                <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+                <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+                <div class="hamburger-line w-6 h-0.5 bg-white"></div>
+            </button>
+            <h1 class="text-2xl font-bold text-center flex-1">Smart Farmer</h1>
+            <div class="flex items-center gap-2">
+                <select id="languageSelect" class="bg-blue-700 text-white px-2 py-1 rounded text-sm border-none outline-none">
+                    <option value="en-US">English</option>
+                    <option value="hi-IN">Other Language</option>
+                </select>
+                <button id="voiceBtn" class="bg-blue-800 hover:bg-blue-900 px-4 py-2 rounded-lg font-semibold transition-colors voice-pulse text-white shadow-lg">
+                    🔊 speak
+                </button>
+            </div>
+        </div>
+    </header>
+
+    {# Dashboard Overlay (from _dashboard_overlay.html) #}
+    <div id="dashboardOverlay" class="fixed inset-0 dashboard-overlay z-40 hidden">
+        <div class="flex justify-center items-center min-h-screen p-4">
+            <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Dashboard</h2>
+                    <button id="closeDashboard" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+                </div>
+                <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                    {# Existing Cards #}
+                    <button class="dashboard-card text-white p-3 rounded-lg shadow-lg transition-all transform hover:scale-110 hover:shadow-xl"
+                        style="background: linear-gradient(135deg, #FF1493, #FF69B4); box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);"
+                        data-page="cropsPage">
+                        <div class="text-2xl mb-1">🌾</div>
+                        <h3 class="text-sm font-bold mb-1">Crops</h3>
+                        <p class="text-xs opacity-90">Wiki Info</p>
+                    </button>
+                    <button class="dashboard-card text-white p-3 rounded-lg shadow-lg transition-all transform hover:scale-110 hover:shadow-xl"
+                        style="background: linear-gradient(135deg, #00FF7F, #32CD32); box-shadow: 0 0 20px rgba(0, 255, 127, 0.5);"
+                        data-page="marketPage">
+                        <div class="text-2xl mb-1">💰</div>
+                        <h3 class="text-sm font-bold mb-1">Market</h3>
+                        <p class="text-xs opacity-90">Live Prices</p>
+                    </button>
+                    <button class="dashboard-card text-white p-3 rounded-lg shadow-lg transition-all transform hover:scale-110 hover:shadow-xl"
+                        style="background: linear-gradient(135deg, #FF4500, #FF6347); box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);"
+                        data-page="pestPage">
+                        <div class="text-2xl mb-1">🐛</div>
+                        <h3 class="text-sm font-bold mb-1">Pesticide Usage</h3>
+                        <p class="text-xs opacity-90">Guidelines</p>
+                    </button>
+                    <button class="dashboard-card text-white p-3 rounded-lg shadow-lg transition-all transform hover:scale-110 hover:shadow-xl"
+                        style="background: linear-gradient(135deg, #FFD700, #FFA500); box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);"
+                        data-page="scannerPage">
+                        <div class="text-2xl mb-1">📱</div>
+                        <h3 class="text-sm font-bold mb-1">Scanner</h3>
+                        <p class="text-xs opacity-90">Disease AI</p>
+                    </button>
+                    <button id="organicDashboardBtn"
+                        class="dashboard-card organic-card text-white p-3 rounded-lg shadow-lg transition-all transform hover:scale-110 hover:shadow-xl"
+                        style="background: linear-gradient(135deg, #00FF00, #ADFF2F); box-shadow: 0 0 20px rgba(0, 255, 127, 0.5);"
+                        data-page="organicMainPage">
+                        <div class="text-2xl mb-1">🌿</div>
+                        <h3 class="text-sm font-bold mb-1">Organic</h3>
+                        <p class="text-xs opacity-90">Premium</p>
+                        <div class="mt-1 text-xs bg-white bg-opacity-30 px-1 py-0.5 rounded-full">Pro</div>
+                    </button>
+                    
+                    {# ⭐ NEW REVIEW CARD ADDED HERE ⭐ #}
+                    <button class="dashboard-card text-white p-3 rounded-lg shadow-lg transition-all transform hover:scale-110 hover:shadow-xl"
+                        style="background: linear-gradient(135deg, #1e90ff, #00bfff); box-shadow: 0 0 20px rgba(30, 144, 255, 0.5);"
+                        data-page="reviewPage">
+                        <div class="text-2xl mb-1">⭐</div>
+                        <h3 class="text-sm font-bold mb-1">Review</h3>
+                        <p class="text-xs opacity-90">Feedback</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto p-4 pb-24">
+        {% block content %}
+        {# Default content or instructions if no specific page is loaded #}
+        {% endblock %}
+    </main>
+
+    {# Chatbot (from _chatbot.html) #}
+    <div id="chatbot" class="fixed bottom-4 right-4 z-50">
+        <button id="chatToggle" class="w-16 h-16 transform rotate-45 shadow-lg transition-all hover:scale-110"
+            style="background: linear-gradient(135deg, #FF1493, #FF69B4); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);">
+            <span class="transform -rotate-45 text-white text-2xl">🤖</span>
+        </button>
+        <div id="chatWindow" class="hidden absolute bottom-20 right-0 w-96 rounded-lg shadow-2xl border-2"
+            style="background: linear-gradient(135deg, #FF1493, #FF69B4);">
+            <div class="text-white p-4 rounded-t-lg flex justify-between items-center">
+                <h3 class="font-bold text-lg">🌾 AgriBot - Your Farming Expert</h3>
+                <button id="closeChatbot" class="text-white hover:text-gray-200 text-xl font-bold">✕</button>
+            </div>
+            <div id="chatMessages" class="h-80 overflow-y-auto p-4 space-y-3 bg-white bg-opacity-95 backdrop-blur-sm">
+                <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-3 rounded-lg border-l-4 border-pink-500">
+                    <p class="text-sm font-medium">🌱 Hello! I'm AgriBot, your comprehensive agriculture assistant. I
+                        can help you with:</p>
+                    <ul class="text-xs mt-2 space-y-1 text-gray-700">
+                        <li>• Crop cultivation & farming processes</li>
+                        <li>• Pesticide usage & safety guidelines</li>
+                        <li>• Cost estimation per acre</li>
+                        <li>• Farming roadmaps & suggestions</li>
+                        <li>• Disease identification & treatment</li>
+                        <li>• Market prices & demand analysis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="p-4 bg-white bg-opacity-90 rounded-b-lg">
+                <div class="flex gap-2 mb-2">
+                    <input type="text" id="chatInput"
+                        class="flex-1 p-3 border-2 border-pink-300 rounded-lg text-sm focus:border-pink-500 focus:outline-none"
+                        placeholder="Ask me anything about agriculture...">
+                    <button id="chatSend"
+                        class="px-4 py-3 rounded-lg text-sm font-semibold text-white transition-all hover:scale-105"
+                        style="background: linear-gradient(135deg, #FF1493, #FF69B4);">Send</button>
+                </div>
+                <div class="flex gap-2">
+                    <button id="voiceInput"
+                        class="flex-1 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:scale-105"
+                        style="background: linear-gradient(135deg, #9370DB, #8A2BE2);">🎤 Voice</button>
+                    <button id="quickHelp"
+                        class="flex-1 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:scale-105"
+                        style="background: linear-gradient(135deg, #00CED1, #20B2AA);">💡 Quick Help</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Scripts (main script.js and page-specific scripts) #}
+    <script src="{% static 'myapp/js/script.js' %}"></script>
+    {% block page_scripts %}{% endblock %} 
+</body>
+</html>

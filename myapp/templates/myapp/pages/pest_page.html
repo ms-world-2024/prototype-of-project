@@ -1,0 +1,328 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Pest Management By Crop{% endblock %}
+
+{% block content %}
+<div id="pestPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('homePage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back to Home</button>
+        <h2 class="text-2xl font-bold text-gray-800">🐛 Pest Management Resource</h2>
+    </div>
+
+    {# --- PEST MANAGEMENT LIST SECTION (The Card Selector) --- #}
+    <div id="cropListSection" class="mb-8">
+        <h3 class="text-xl font-semibold mb-4 text-green-700">Select Crop to View Pest Strategy:</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            
+            {# Example Cards (Ensure data-crop attributes match keys in views.py) #}
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer hover:shadow-xl" data-crop="wheat">
+                <div class="text-3xl mb-2">🌾</div>
+                <h4 class="font-semibold">Wheat</h4>
+                <p class="text-sm text-gray-600">Rusts & Aphids</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer hover:shadow-xl" data-crop="rice">
+                <div class="text-3xl mb-2">🍚</div>
+                <h4 class="font-semibold">Rice</h4>
+                <p class="text-sm text-gray-600">Stem Borer & BPH</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer hover:shadow-xl" data-crop="maize">
+                <div class="text-3xl mb-2">🌽</div>
+                <h4 class="font-semibold">Maize</h4>
+                <p class="text-sm text-gray-600">Corn Borer</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer hover:shadow-xl" data-crop="sugarcane">
+                <div class="text-3xl mb-2">🎋</div>
+                <h4 class="font-semibold">Sugarcane</h4>
+                <p class="text-sm text-gray-600">Shoot Borer</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer hover:shadow-xl" data-crop="cotton">
+                <div class="text-3xl mb-2">🌿</div>
+                <h4 class="font-semibold">Cotton</h4>
+                <p class="text-sm text-gray-600">Pink Bollworm</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="barley">
+                <div class="text-3xl mb-2">🌾</div>
+                <h4 class="font-semibold">Barley</h4>
+                <p class="text-sm text-gray-600">General Pests</p>
+            </div>
+             <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sorghum">
+                <div class="text-3xl mb-2">🌾</div>
+                <h4 class="font-semibold">Sorghum (Jowar)</h4>
+                <p class="text-sm text-gray-600">Drought resistant</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="bajra">
+                <div class="text-3xl mb-2">🌾</div>
+                <h4 class="font-semibold">Bajra (Pearl Millet)</h4>
+                <p class="text-sm text-gray-600">Arid regions</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="gram">
+                <div class="text-3xl mb-2">🫘</div>
+                <h4 class="font-semibold">Gram (Chana)</h4>
+                <p class="text-sm text-gray-600">Pod Borer</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="lentil">
+                <div class="text-3xl mb-2">🫘</div>
+                <h4 class="font-semibold">Lentil (Masoor)</h4>
+                <p class="text-sm text-gray-600">Pod Borer</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="moong">
+                <div class="text-3xl mb-2">🫘</div>
+                <h4 class="font-semibold">Moong (Green Gram)</h4>
+                <p class="text-sm text-gray-600">Quick growing</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="arhar">
+                <div class="text-3xl mb-2">🫘</div>
+                <h4 class="font-semibold">Arhar/Tur (Pigeon Pea)</h4>
+                <p class="text-sm text-gray-600">Long duration</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="urad">
+                <div class="text-3xl mb-2">🫘</div>
+                <h4 class="font-semibold">Urad (Black Gram)</h4>
+                <p class="text-sm text-gray-600">Nitrogen fixing</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="mustard">
+                <div class="text-3xl mb-2">🌻</div>
+                <h4 class="font-semibold">Mustard</h4>
+                <p class="text-sm text-gray-600">Oil extraction</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="groundnut">
+                <div class="text-3xl mb-2">🥜</div>
+                <h4 class="font-semibold">Groundnut (Peanut)</h4>
+                <p class="text-sm text-gray-600">High oil content</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sunflower">
+                <div class="text-3xl mb-2">🌻</div>
+                <h4 class="font-semibold">Sunflower</h4>
+                <p class="text-sm text-gray-600">Quality oil</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sesame">
+                <div class="text-3xl mb-2">🌱</div>
+                <h4 class="font-semibold">Sesame (Til)</h4>
+                <p class="text-sm text-gray-600">Premium oil</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="soybean">
+                <div class="text-3xl mb-2">🫘</div>
+                <h4 class="font-semibold">Soybean</h4>
+                <p class="text-sm text-gray-600">Protein & oil</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="tobacco">
+                <div class="text-3xl mb-2">🍃</div>
+                <h4 class="font-semibold">Tobacco</h4>
+                <p class="text-sm text-gray-600">Small areas</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="kinnow">
+                <div class="text-3xl mb-2">🍊</div>
+                <h4 class="font-semibold">Kinnow (Citrus)</h4>
+                <p class="text-sm text-gray-600">Winter fruit</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="guava">
+                <div class="text-3xl mb-2">🍈</div>
+                <h4 class="font-semibold">Guava</h4>
+                <p class="text-sm text-gray-600">Vitamin C rich</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="mango">
+                <div class="text-3xl mb-2">🥭</div>
+                <h4 class="font-semibold">Mango</h4>
+                <p class="text-sm text-gray-600">King of fruits</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="peach">
+                <div class="text-3xl mb-2">🍑</div>
+                <h4 class="font-semibold">Peach</h4>
+                <p class="text-sm text-gray-600">Temperate fruit</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="pomegranate">
+                <div class="text-3xl mb-2">🍎</div>
+                <h4 class="font-semibold">Pomegranate</h4>
+                <p class="text-sm text-gray-600">Antioxidant rich</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="papaya">
+                <div class="text-3xl mb-2">🥭</div>
+                <h4 class="font-semibold">Papaya</h4>
+                <p class="text-sm text-gray-600">Year round</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="potato">
+                <div class="text-3xl mb-2">🥔</div>
+                <h4 class="font-semibold">Potato</h4>
+                <p class="text-sm text-gray-600">Staple vegetable</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="tomato">
+                <div class="text-3xl mb-2">🍅</div>
+                <h4 class="font-semibold">Tomato</h4>
+                <p class="text-sm text-gray-600">High demand</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="onion">
+                <div class="text-3xl mb-2">🧅</div>
+                <h4 class="font-semibold">Onion</h4>
+                <p class="text-sm text-gray-600">Essential crop</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="cauliflower">
+                <div class="text-3xl mb-2">🥬</div>
+                <h4 class="font-semibold">Cauliflower</h4>
+                <p class="text-sm text-gray-600">Cool season</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="cabbage">
+                <div class="text-3xl mb-2">🥬</div>
+                <h4 class="font-semibold">Cabbage</h4>
+                <p class="text-sm text-gray-600">Leafy vegetable</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="carrot">
+                <div class="text-3xl mb-2">🥕</div>
+                <h4 class="font-semibold">Carrot</h4>
+                <p class="text-sm text-gray-600">Root vegetable</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="radish">
+                <div class="text-3xl mb-2">🥕</div>
+                <h4 class="font-semibold">Radish</h4>
+                <p class="text-sm text-gray-600">Quick growing</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="spinach">
+                <div class="text-3xl mb-2">🥬</div>
+                <h4 class="font-semibold">Spinach</h4>
+                <p class="text-sm text-gray-600">Iron rich</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="brinjal">
+                <div class="text-3xl mb-2">🍆</div>
+                <h4 class="font-semibold">Brinjal (Eggplant)</h4>
+                <p class="text-sm text-gray-600">Popular vegetable</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="alfalfa">
+                <div class="text-3xl mb-2">🌿</div>
+                <h4 class="font-semibold">Alfalfa (Lucerne)</h4>
+                <p class="text-sm text-gray-600">High protein fodder</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="maize-silage">
+                <div class="text-3xl mb-2">🌽</div>
+                <h4 class="font-semibold">Maize (for silage)</h4>
+                <p class="text-sm text-gray-600">Cattle feed</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sorghum-hybrid">
+                <div class="text-3xl mb-2">🌾</div>
+                <h4 class="font-semibold">Sorghum Sudan Hybrid</h4>
+                <p class="text-sm text-gray-600">Multi-cut fodder</p>
+            </div>
+            <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="berseem">
+                <div class="text-3xl mb-2">🍀</div>
+                <h4 class="font-semibold">Berseem (Clovers)</h4>
+                <p class="text-sm text-gray-600">Winter fodder</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="pestDetailsDisplay" class="hidden">
+        <div class="flex items-center mb-6">
+            <button id="backToPestList"
+                class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back to List</button>
+            <h2 class="text-2xl font-bold text-gray-800">🐛 Pest Management Details</h2>
+        </div>
+        
+        <div class="bg-white p-6 rounded-xl shadow-xl border-t-4 border-red-700 space-y-6">
+            <h3 id="pestTitle" class="text-3xl font-bold text-red-800 mb-6"></h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {# 1. IDENTIFICATION & SYMPTOMS #}
+                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-600">
+                    <h4 class="font-semibold text-xl text-yellow-800 mb-2">1. 🔍 Pest Identification & Symptoms</h4>
+                    <p id="identification" class="text-gray-700"></p>
+                </div>
+                
+                {# 2. PESTICIDES & MIXTURES #}
+                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+                    <h4 class="font-semibold text-xl text-blue-800 mb-2">2. 🧪 Pesticides & Exact Mixtures</h4>
+                    <p id="mixtures" class="text-gray-700"></p>
+                </div>
+                
+                {# 3. MIXING & APPLICATION PROCESS #}
+                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-600">
+                    <h4 class="font-semibold text-xl text-purple-800 mb-2">3. 🚿 Mixing & Application Process</h4>
+                    <p id="application_process" class="text-gray-700"></p>
+                </div>
+
+                {# 4. SAFETY #}
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-600">
+                    <h4 class="font-semibold text-xl text-red-800 mb-2">4. 🚨 Safety & Precautions (PHI)</h4>
+                    <p id="safety_precautions" class="text-gray-700"></p>
+                </div>
+            </div>
+
+            {# 5. ADDITIONAL RECOMMENDATIONS (Full Width) #}
+            <div class="bg-green-100 p-4 rounded-lg border-l-4 border-green-600 lg:col-span-2">
+                <h4 class="font-semibold text-xl text-green-800 mb-2">5. 🌿 Additional Recommendations (IPM & Natural Practices)</h4>
+                <p id="recommendations" class="text-gray-700"></p>
+            </div>
+
+            <p class="text-xs text-gray-500 mt-6 pt-3 border-t">
+                *Data synchronized from the Crop Cultivation Guide for pest and organic practices.
+            </p>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block page_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pestListSection = document.getElementById('cropListSection');
+        const pestDetailsDisplay = document.getElementById('pestDetailsDisplay');
+        const backButton = document.getElementById('backToPestList');
+
+        async function loadPestDetails(cropName) {
+            try {
+                // API call to the dedicated Pest Details endpoint
+                const response = await fetch(`/api/get-pest-details/${cropName}/`);
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    document.getElementById('pestTitle').textContent = `Error: ${errorData.error || 'Data could not be found.'}`;
+                    // Clear the details section on error
+                    document.getElementById('identification').textContent = '—';
+                    document.getElementById('mixtures').textContent = '—';
+                    document.getElementById('application_process').textContent = '—';
+                    document.getElementById('safety_precautions').textContent = '—';
+                    document.getElementById('recommendations').textContent = '—';
+                    
+                    // Show details section to display error message
+                    pestListSection.classList.add('hidden');
+                    pestDetailsDisplay.classList.remove('hidden');
+                    return;
+                }
+                const data = await response.json();
+                
+                // 1. Map the 5 fields to the HTML elements
+                document.getElementById('pestTitle').textContent = data.title;
+                document.getElementById('identification').textContent = data.identification;
+                document.getElementById('mixtures').textContent = data.mixtures;
+                document.getElementById('application_process').textContent = data.application_process;
+                document.getElementById('safety_precautions').textContent = data.safety_precautions;
+                document.getElementById('recommendations').textContent = data.recommendations;
+                
+                // 2. Toggle visibility
+                pestListSection.classList.add('hidden');
+                pestDetailsDisplay.classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Fetch error:', error);
+                document.getElementById('pestTitle').textContent = 'Error: Could not connect to server or data is corrupted.';
+            }
+        }
+
+        // Listener for the clickable pest cards (using the shared crop-card class)
+        document.querySelectorAll('.crop-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const cropName = this.getAttribute('data-crop');
+                loadPestDetails(cropName);
+            });
+        });
+
+        // Listener for the back button on the details view
+        if(backButton) {
+            backButton.addEventListener('click', function() {
+                pestListSection.classList.remove('hidden');
+                pestDetailsDisplay.classList.add('hidden');
+            });
+        }
+    });
+</script>
+{% endblock %}

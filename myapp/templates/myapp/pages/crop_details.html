@@ -1,0 +1,315 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Crop Information{% endblock %}
+
+{% block content %}
+<div id="cropsPage" class="page">
+    <div id="cropListSection" class="">
+        <div class="flex items-center mb-6">
+            <button onclick="showPage('homePage')"
+                class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+            <h2 class="text-2xl font-bold text-gray-800">🌾 Crop Information</h2>
+        </div>
+        <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-green-700">1. Cereals (Food Grains)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="wheat">
+                    <div class="text-3xl mb-2">🌾</div>
+                    <h4 class="font-semibold">Wheat</h4>
+                    <p class="text-sm text-gray-600">Rabi season crop</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="rice">
+                    <div class="text-3xl mb-2">🍚</div>
+                    <h4 class="font-semibold">Rice (Basmati & Non-Basmati)</h4>
+                    <p class="text-sm text-gray-600">Kharif season crop</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="maize">
+                    <div class="text-3xl mb-2">🌽</div>
+                    <h4 class="font-semibold">Maize (Corn)</h4>
+                    <p class="text-sm text-gray-600">Both seasons</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="barley">
+                    <div class="text-3xl mb-2">🌾</div>
+                    <h4 class="font-semibold">Barley</h4>
+                    <p class="text-sm text-gray-600">Rabi season crop</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sorghum">
+                    <div class="text-3xl mb-2">🌾</div>
+                    <h4 class="font-semibold">Sorghum (Jowar)</h4>
+                    <p class="text-sm text-gray-600">Drought resistant</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="bajra">
+                    <div class="text-3xl mb-2">🌾</div>
+                    <h4 class="font-semibold">Bajra (Pearl Millet)</h4>
+                    <p class="text-sm text-gray-600">Arid regions</p>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-blue-700">2. Pulses (Legumes)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="gram">
+                    <div class="text-3xl mb-2">🫘</div>
+                    <h4 class="font-semibold">Gram (Chana)</h4>
+                    <p class="text-sm text-gray-600">Protein rich</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="lentil">
+                    <div class="text-3xl mb-2">🫘</div>
+                    <h4 class="font-semibold">Lentil (Masoor)</h4>
+                    <p class="text-sm text-gray-600">High protein</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="moong">
+                    <div class="text-3xl mb-2">🫘</div>
+                    <h4 class="font-semibold">Moong (Green Gram)</h4>
+                    <p class="text-sm text-gray-600">Quick growing</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="arhar">
+                    <div class="text-3xl mb-2">🫘</div>
+                    <h4 class="font-semibold">Arhar/Tur (Pigeon Pea)</h4>
+                    <p class="text-sm text-gray-600">Long duration</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="urad">
+                    <div class="text-3xl mb-2">🫘</div>
+                    <h4 class="font-semibold">Urad (Black Gram)</h4>
+                    <p class="text-sm text-gray-600">Nitrogen fixing</p>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-yellow-700">3. Oilseeds</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="mustard">
+                    <div class="text-3xl mb-2">🌻</div>
+                    <h4 class="font-semibold">Mustard</h4>
+                    <p class="text-sm text-gray-600">Oil extraction</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="groundnut">
+                    <div class="text-3xl mb-2">🥜</div>
+                    <h4 class="font-semibold">Groundnut (Peanut)</h4>
+                    <p class="text-sm text-gray-600">High oil content</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sunflower">
+                    <div class="text-3xl mb-2">🌻</div>
+                    <h4 class="font-semibold">Sunflower</h4>
+                    <p class="text-sm text-gray-600">Quality oil</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sesame">
+                    <div class="text-3xl mb-2">🌱</div>
+                    <h4 class="font-semibold">Sesame (Til)</h4>
+                    <p class="text-sm text-gray-600">Premium oil</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="soybean">
+                    <div class="text-3xl mb-2">🫘</div>
+                    <h4 class="font-semibold">Soybean</h4>
+                    <p class="text-sm text-gray-600">Protein & oil</p>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-purple-700">4. Cash Crops / Industrial Crops</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="cotton">
+                    <div class="text-3xl mb-2">🌿</div>
+                    <h4 class="font-semibold">Cotton</h4>
+                    <p class="text-sm text-gray-600">Fiber crop</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="sugarcane">
+                    <div class="text-3xl mb-2">🎋</div>
+                    <h4 class="font-semibold">Sugarcane</h4>
+                    <p class="text-sm text-gray-600">Sugar production</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="tobacco">
+                    <div class="text-3xl mb-2">🍃</div>
+                    <h4 class="font-semibold">Tobacco</h4>
+                    <p class="text-sm text-gray-600">Small areas</p>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-red-700">5. Horticultural Crops</h3>
+            <div class="mb-4">
+                <h4 class="text-lg font-medium mb-3 text-red-600">Fruits:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="kinnow">
+                        <div class="text-3xl mb-2">🍊</div>
+                        <h4 class="font-semibold">Kinnow (Citrus)</h4>
+                        <p class="text-sm text-gray-600">Winter fruit</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="guava">
+                        <div class="text-3xl mb-2">🍈</div>
+                        <h4 class="font-semibold">Guava</h4>
+                        <p class="text-sm text-gray-600">Vitamin C rich</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="mango">
+                        <div class="text-3xl mb-2">🥭</div>
+                        <h4 class="font-semibold">Mango</h4>
+                        <p class="text-sm text-gray-600">King of fruits</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="peach">
+                        <div class="text-3xl mb-2">🍑</div>
+                        <h4 class="font-semibold">Peach</h4>
+                        <p class="text-sm text-gray-600">Temperate fruit</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer"
+                        data-crop="pomegranate">
+                        <div class="text-3xl mb-2">🍎</div>
+                        <h4 class="font-semibold">Pomegranate</h4>
+                        <p class="text-sm text-gray-600">Antioxidant rich</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="papaya">
+                        <div class="text-3xl mb-2">🥭</div>
+                        <h4 class="font-semibold">Papaya</h4>
+                        <p class="text-sm text-gray-600">Year round</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <h4 class="text-lg font-medium mb-3 text-red-600">Vegetables:</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="potato">
+                        <div class="text-3xl mb-2">🥔</div>
+                        <h4 class="font-semibold">Potato</h4>
+                        <p class="text-sm text-gray-600">Staple vegetable</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="tomato">
+                        <div class="text-3xl mb-2">🍅</div>
+                        <h4 class="font-semibold">Tomato</h4>
+                        <p class="text-sm text-gray-600">High demand</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="onion">
+                        <div class="text-3xl mb-2">🧅</div>
+                        <h4 class="font-semibold">Onion</h4>
+                        <p class="text-sm text-gray-600">Essential crop</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer"
+                        data-crop="cauliflower">
+                        <div class="text-3xl mb-2">🥬</div>
+                        <h4 class="font-semibold">Cauliflower</h4>
+                        <p class="text-sm text-gray-600">Cool season</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="cabbage">
+                        <div class="text-3xl mb-2">🥬</div>
+                        <h4 class="font-semibold">Cabbage</h4>
+                        <p class="text-sm text-gray-600">Leafy vegetable</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="carrot">
+                        <div class="text-3xl mb-2">🥕</div>
+                        <h4 class="font-semibold">Carrot</h4>
+                        <p class="text-sm text-gray-600">Root vegetable</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="radish">
+                        <div class="text-3xl mb-2">🥕</div>
+                        <h4 class="font-semibold">Radish</h4>
+                        <p class="text-sm text-gray-600">Quick growing</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="spinach">
+                        <div class="text-3xl mb-2">🥬</div>
+                        <h4 class="font-semibold">Spinach</h4>
+                        <p class="text-sm text-gray-600">Iron rich</p>
+                    </div>
+                    <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="brinjal">
+                        <div class="text-3xl mb-2">🍆</div>
+                        <h4 class="font-semibold">Brinjal (Eggplant)</h4>
+                        <p class="text-sm text-gray-600">Popular vegetable</p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-4 text-green-700">6. Fodder Crops (for Livestock)</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="alfalfa">
+                    <div class="text-3xl mb-2">🌿</div>
+                    <h4 class="font-semibold">Alfalfa (Lucerne)</h4>
+                    <p class="text-sm text-gray-600">High protein fodder</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer"
+                    data-crop="maize-silage">
+                    <div class="text-3xl mb-2">🌽</div>
+                    <h4 class="font-semibold">Maize (for silage)</h4>
+                    <p class="text-sm text-gray-600">Cattle feed</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer"
+                    data-crop="sorghum-hybrid">
+                    <div class="text-3xl mb-2">🌾</div>
+                    <h4 class="font-semibold">Sorghum Sudan Hybrid</h4>
+                    <p class="text-sm text-gray-600">Multi-cut fodder</p>
+                </div>
+                <div class="crop-card bg-white p-4 rounded-xl shadow-lg cursor-pointer" data-crop="berseem">
+                    <div class="text-3xl mb-2">🍀</div>
+                    <h4 class="font-semibold">Berseem (Clovers)</h4>
+                    <p class="text-sm text-gray-600">Winter fodder</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cropDetails" class="hidden">
+        <div class="flex items-center mb-6">
+            <button id="backToCrops"
+                class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back to Crops</button>
+            <h2 class="text-2xl font-bold text-gray-800">🌾 Crop Details</h2>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 id="cropTitle" class="text-2xl font-bold mb-4"></h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">1. Crop Identity and Historical Context</h4>
+                    <p id="cropIdentityInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">2. Soil Requirements</h4>
+                    <p id="soilRequirementsInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">3. Climate Requirements</h4>
+                    <p id="climateRequirementsInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">4. Water and Irrigation Needs</h4>
+                    <p id="waterIrrigationInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">5. Varieties</h4>
+                    <p id="varietiesInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">6. Seed Selection and Sowing</h4>
+                    <p id="seedSowingInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">7. Nutrient Management</h4>
+                    <p id="nutrientManagementInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">8. Season of Cultivation</h4>
+                    <p id="seasonCultivationInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">9. Land Preparation</h4>
+                    <p id="landPreparationInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">10. Process of Cultivation (Sowing → Harvesting)</h4>
+                    <p id="processCultivationInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">11. Organic Farming Practices</h4>
+                    <p id="organicFarmingInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">12. Harvesting and Storage</h4>
+                    <p id="harvestingStorageInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">13. Estimated Cost of Cultivation</h4>
+                    <p id="costCultivationInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">14. Locations of Cultivation</h4>
+                    <p id="locationsCultivationInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-yellow-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-yellow-800 mb-2">15. Pests Affecting</h4>
+                    <p id="pestsAffectingInfo" class="text-sm text-gray-700"></p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">16. Pest-Control Measures & Pesticides Used</h4>
+                    <p id="pestControlInfo" class="text-sm text-gray-700"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

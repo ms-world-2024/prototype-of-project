@@ -1,0 +1,37 @@
+{% load static %}
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+</script>
+
+<script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<a href="{% url 'logout' %}" style="float:right; margin:10px; color:green; font-weight:bold;">
+    Logout
+</a>
+
+<header class="bg-green-600 text-white p-4 shadow-lg">
+    <div class="flex justify-between items-center max-w-6xl mx-auto">
+        <button id="menuBtn" class="hamburger p-2 hover:bg-green-700 rounded-lg transition-colors">
+            <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+            <div class="hamburger-line w-6 h-0.5 bg-white mb-1"></div>
+            <div class="hamburger-line w-6 h-0.5 bg-white"></div>
+        </button>
+        <h1 class="text-2xl font-bold text-center flex-1">Smart Farmer</h1>
+        <div class="flex items-center gap-2">
+            <select id="languageSelect"
+                class="bg-blue-700 text-white px-2 py-1 rounded text-sm border-none outline-none">
+                <option value="en-US">English</option>
+                <option value="hi-IN">Other Language</option>
+            </select>
+            <button id="voiceBtn"
+                class="bg-blue-800 hover:bg-blue-900 px-4 py-2 rounded-lg font-semibold transition-colors voice-pulse text-white shadow-lg">
+                🔊 speak
+            </button>
+        </div>
+    </div>
+</header>

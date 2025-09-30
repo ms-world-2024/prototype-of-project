@@ -1,0 +1,34 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Agriculture News{% endblock %}
+
+{% block content %}
+<div id="agriNewsPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('organicMainPage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+        <h2 class="text-2xl font-bold text-gray-800">📰 Agriculture News</h2>
+    </div>
+    <div class="space-y-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-lg font-semibold mb-2">Government Announces New Organic Farming Subsidies</h3>
+            <p class="text-gray-600 text-sm mb-3">The government has increased organic farming subsidies by 40%
+                to promote sustainable agriculture practices across the country.</p>
+            <span class="text-xs text-gray-500">2 hours ago</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-lg font-semibold mb-2">Parliament Passes New Farm Bill for Small Farmers</h3>
+            <p class="text-gray-600 text-sm mb-3">New legislation provides enhanced MSP protection and direct
+                market access for small-scale farmers.</p>
+            <span class="text-xs text-gray-500">5 hours ago</span>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">
+            <h3 class="text-lg font-semibold mb-2">Climate-Resilient Crop Varieties Released</h3>
+            <p class="text-gray-600 text-sm mb-3">Agricultural research institutes release new drought and
+                flood-resistant crop varieties for farmers.</p>
+            <span class="text-xs text-gray-500">1 day ago</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

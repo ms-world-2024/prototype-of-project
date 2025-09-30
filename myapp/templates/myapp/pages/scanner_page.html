@@ -1,0 +1,87 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - AI Scanner{% endblock %}
+
+{% block content %}
+<div id="scannerPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('homePage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back</button>
+        <h2 class="text-2xl font-bold text-gray-800">📱 AI Disease Detection Scanner</h2>
+    </div>
+    <div class="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto">
+        <div class="text-center mb-6">
+            <h3 class="text-xl font-semibold mb-2 text-green-700">🔬 Crop Disease Detection</h3>
+            <p class="text-gray-600">Upload or capture an image of your crop to detect diseases and get
+                treatment recommendations</p>
+        </div>
+        <div
+            class="relative bg-gradient-to-br from-gray-100 to-gray-200 h-80 rounded-lg mb-6 overflow-hidden border-2 border-dashed border-gray-300">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-8xl mb-4">📷</div>
+                    <p class="text-gray-500">Click to capture or upload image</p>
+                </div>
+            </div>
+            <div id="scanLine"
+                class="absolute w-full h-2 bg-gradient-to-r from-green-400 to-blue-500 scanning-animation hidden opacity-80">
+            </div>
+            <input type="file" id="imageUpload" accept="image/*"
+                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+        </div>
+        <div class="flex gap-4 mb-6">
+            <button id="startScan"
+                class="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                🔍 Analyze Image
+            </button>
+            <button id="captureImage"
+                class="flex-1 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                📸 Capture Photo
+            </button>
+        </div>
+        <div id="scanResult" class="hidden">
+            <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
+                <h3 class="font-bold text-lg text-green-800 mb-4">🎯 Disease Detection Results</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-red-700 mb-2">🦠 Detected Disease</h4>
+                        <p id="diseaseType" class="text-gray-800 font-medium mb-2"></p>
+                        <p id="diseaseDescription" class="text-sm text-gray-600 mb-3"></p>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="text-xs text-red-800"><strong>Confidence:</strong> <span
+                                    id="confidence"></span></p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 class="font-semibold text-blue-700 mb-2">💊 Treatment Recommendations</h4>
+                        <div id="treatmentList" class="space-y-2">
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 bg-white p-4 rounded-lg shadow-sm">
+                    <h4 class="font-semibold text-purple-700 mb-3">🧪 Recommended Pesticides</h4>
+                    <div id="pesticideRecommendations" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    </div>
+                </div>
+                <div class="mt-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                    <h4 class="font-semibold text-yellow-800 mb-2">⚠️ Prevention Tips</h4>
+                    <ul id="preventionTips" class="text-sm text-yellow-700 space-y-1">
+                    </ul>
+                </div>
+                <div class="mt-4 flex gap-2">
+                    <button id="readScanResult"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">🔊
+                        Read Results</button>
+                    <button id="saveResults"
+                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">💾
+                        Save Report</button>
+                    <button id="shareResults"
+                        class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm transition-colors">📤
+                        Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

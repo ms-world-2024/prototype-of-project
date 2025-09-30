@@ -1,0 +1,110 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Customer Feedback Dashboard{% endblock %}
+
+{% block content %}
+<div id="reviewsListPage" class="page">
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8 pb-4 border-b">
+        <div class="flex items-center mb-4 md:mb-0">
+            <button onclick="showPage('homePage')"
+                class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">← Back to Home</button>
+            <h2 class="text-3xl font-extrabold text-gray-800">Customer Feedback</h2>
+        </div>
+        
+        {# Link to the submission page #}
+        <button onclick="showPage('reviewPage')"
+            class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-bold transition-colors shadow-md">
+            + Submit New Feedback
+        </button>
+    </div>
+
+    {# AGGREGATE STATISTICS & SCORE CARD #}
+    {% if total_reviews > 0 %}
+    <div class="bg-gradient-to-r from-gray-50 to-green-50 p-6 rounded-2xl shadow-xl mb-10 flex flex-col md:flex-row justify-around items-center space-y-4 md:space-y-0">
+        
+        <div class="text-center">
+            <p class="text-5xl font-extrabold text-yellow-600 tracking-tight">{{ average_rating }}/5</p>
+            <div class="text-xl text-yellow-500 mt-2">
+                {# Display visual representation of the average score #}
+                {% for i in "12345"|make_list %}
+                    {% if forloop.counter <= average_rating %}
+                        ★
+                    {% else %}
+                        <span class="text-gray-300">★</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <p class="text-base text-gray-600 font-medium mt-1">Overall Satisfaction Score</p>
+        </div>
+        
+        <div class="h-16 w-px bg-gray-300 hidden md:block"></div>
+        
+        <div class="text-center">
+            <p class="text-5xl font-extrabold text-green-600 tracking-tight">{{ total_reviews }}</p>
+            <p class="text-base text-gray-600 font-medium">Total Verified Reviews</p>
+        </div>
+    </div>
+    {% endif %}
+
+    <h3 class="text-2xl font-bold text-gray-700 mb-6 border-b pb-2">Recent Feedback</h3>
+
+    <div class="space-y-6 max-w-4xl mx-auto">
+        {% for review in reviews %}
+        
+        {# Define status class and border color based on rating #}
+        {% if review.rating >= 4 %}
+            {% with status_icon='✅' status_text='Excellent Experience' border_color='border-green-500' bg_color='bg-green-50' %}
+        {% elif review.rating == 3 %}
+            {% with status_icon='⚠️' status_text='Neutral Feedback' border_color='border-yellow-500' bg_color='bg-yellow-50' %}
+        {% else %}
+            {% with status_icon='❌' status_text='Needs Attention' border_color='border-red-500' bg_color='bg-red-50' %}
+        {% endif %}
+        
+        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 {{ border_color }} transition-shadow hover:shadow-xl">
+            <div class="flex justify-between items-start mb-3">
+                
+                {# Reviewer Info & Status #}
+                <div>
+                    <p class="text-sm text-gray-500 font-medium">
+                        Submitted by: 
+                        <span class="font-semibold text-blue-600">{{ review.user.username }}</span> 
+                    </p>
+                    <p class="text-xs text-gray-400">
+                        on {{ review.submission_date|date:"F d, Y, h:i A" }}
+                    </p>
+                </div>
+                
+                {# Rating Stars & Visual Status Badge #}
+                <div class="flex flex-col items-end space-y-1">
+                    <span class="text-2xl text-yellow-500">
+                        {% for i in "12345"|make_list %}
+                            {% if forloop.counter <= review.rating %}
+                                ★
+                            {% else %}
+                                <span class="text-gray-300">★</span>
+                            {% endif %}
+                        {% endfor %}
+                    </span>
+                    <p class="text-sm font-bold {{ title_color }} px-2 py-0.5 rounded-full {{ bg_color }}">
+                        {{ status_icon }} {{ status_text }}
+                    </p>
+                </div>
+            </div>
+            
+            {# Review Text #}
+            <p class="text-gray-800 text-lg border-t pt-3 mt-3 italic">
+                "{{ review.review_text|default:"No detailed comment provided." }}"
+            </p>
+        </div>
+        
+        {% endfor %}
+        {% empty %}
+        <div class="bg-yellow-50 p-6 rounded-xl text-center shadow-lg">
+            <p class="text-xl font-semibold text-yellow-800">No reviews have been submitted yet.</p>
+            <p class="text-gray-600 mt-2">Be the first to share your feedback!</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

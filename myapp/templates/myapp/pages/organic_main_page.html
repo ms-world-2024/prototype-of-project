@@ -1,0 +1,227 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Smart Farmer - Organic Farming Hub{% endblock %}
+
+{% block content %}
+<div id="organicMainPage" class="page">
+    <div class="flex items-center mb-6">
+        <button onclick="showPage('homePage')"
+            class="mr-4 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg">← Back to Main</button>
+        <h2 class="text-3xl font-bold text-gray-800">🌿 Organic Farming Hub</h2>
+    </div>
+
+    <div id="organicBottomNav" class="fixed bottom-4 left-4 z-40">
+        <button id="organicMenuToggle"
+            class="bg-green-600 hover:bg-green-700 text-white p-3 rounded-lg shadow-lg transition-colors">
+            <div class="w-6 h-0.5 bg-white mb-1"></div>
+            <div class="w-6 h-0.5 bg-white mb-1"></div>
+            <div class="w-6 h-0.5 bg-white"></div>
+        </button>
+        <div id="organicMenuOptions"
+            class="hidden absolute bottom-16 left-0 rounded-lg shadow-xl border-2 p-2 w-72"
+            style="background: linear-gradient(135deg, #FF1493, #FF69B4);">
+            <button onclick="showPage('videosPage')"
+                class="w-full text-left p-2 mb-1 rounded-lg flex items-center text-white font-semibold transition-all hover:scale-105"
+                style="background: linear-gradient(135deg, #FF4500, #FF6347); box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);">
+                <span class="text-xl mr-3">🎥</span>
+                <span class="text-sm">Videos</span>
+            </button>
+            <button onclick="showPage('agriNewsPage')"
+                class="w-full text-left p-2 mb-1 rounded-lg flex items-center text-white font-semibold transition-all hover:scale-105"
+                style="background: linear-gradient(135deg, #00CED1, #20B2AA); box-shadow: 0 0 15px rgba(0, 206, 209, 0.4);">
+                <span class="text-xl mr-3">📰</span>
+                <span class="text-sm">AgriNews</span>
+            </button>
+            <button onclick="showPage('aboutOrganicPage')"
+                class="w-full text-left p-2 mb-1 rounded-lg flex items-center text-white font-semibold transition-all hover:scale-105"
+                style="background: linear-gradient(135deg, #9370DB, #8A2BE2); box-shadow: 0 0 15px rgba(147, 112, 219, 0.4);">
+                <span class="text-xl mr-3">📖</span>
+                <span class="text-sm">About Organic</span>
+            </button>
+            <button onclick="showPage('ctocPage')"
+                class="w-full text-left p-2 mb-1 rounded-lg flex items-center text-white font-semibold transition-all hover:scale-105"
+                style="background: linear-gradient(135deg, #FFD700, #FFA500); box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);">
+                <span class="text-xl mr-3">🤝</span>
+                <span class="text-sm">Connect Companies</span>
+            </button>
+            <button onclick="showPage('jobsPage')"
+                class="w-full text-left p-2 mb-1 rounded-lg flex items-center text-white font-semibold transition-all hover:scale-105"
+                style="background: linear-gradient(135deg, #00FF7F, #32CD32); box-shadow: 0 0 15px rgba(0, 255, 127, 0.4);">
+                <span class="text-xl mr-3">💼</span>
+                <span class="text-sm">Jobs</span>
+            </button>
+            <button onclick="showPage('organicPestPage')"
+                class="w-full text-left p-2 rounded-lg flex items-center text-white font-semibold transition-all hover:scale-105"
+                style="background: linear-gradient(135deg, #FF1493, #FF69B4); box-shadow: 0 0 15px rgba(255, 20, 147, 0.4);">
+                <span class="text-xl mr-3">🐛</span>
+                <span class="text-sm">Pest Control</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-8 rounded-xl shadow-lg mb-8">
+        <div class="flex items-center justify-between">
+            <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-4">Welcome to Organic Farming Excellence</h3>
+                <p class="text-lg mb-4">Transform your farming with sustainable, chemical-free methods that
+                    protect the environment and boost your income.</p>
+                <div class="flex items-center space-x-4">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">40%</div>
+                        <div class="text-sm">Higher Prices</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">60%</div>
+                        <div class="text-sm">Cost Reduction</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold">100%</div>
+                        <div class="text-sm">Natural</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-8xl ml-8">🌱</div>
+        </div>
+    </div>
+
+    <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-green-700">🌾 Organic Farming Methods</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="text-5xl mb-4 text-center">🍂</div>
+                <h4 class="text-xl font-semibold mb-3">Composting</h4>
+                <p class="text-gray-600 mb-4">Convert organic waste into nutrient-rich compost. Mix green
+                    materials (kitchen scraps, fresh grass) with brown materials (dry leaves, paper) in 3:1
+                    ratio.</p>
+                <div class="bg-green-50 p-3 rounded-lg">
+                    <p class="text-sm text-green-800"><strong>Process:</strong> Layer materials, maintain
+                        moisture, turn every 2 weeks. Ready in 3-6 months.</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="text-5xl mb-4 text-center">🐛</div>
+                <h4 class="text-xl font-semibold mb-3">Biological Pest Control</h4>
+                <p class="text-gray-600 mb-4">Use beneficial insects, birds, and natural predators to control
+                    harmful pests without chemicals.</p>
+                <div class="bg-blue-50 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800"><strong>Examples:</strong> Ladybugs for aphids, neem oil
+                        spray, companion planting with marigolds.</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="text-5xl mb-4 text-center">🔄</div>
+                <h4 class="text-xl font-semibold mb-3">Crop Rotation</h4>
+                <p class="text-gray-600 mb-4">Rotate different crop families to maintain soil fertility and
+                    break pest cycles naturally.</p>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                    <p class="text-sm text-purple-800"><strong>Pattern:</strong> Legumes → Cereals → Root crops
+                        → Leafy vegetables</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="text-5xl mb-4 text-center">🌿</div>
+                <h4 class="text-xl font-semibold mb-3">Green Manuring</h4>
+                <p class="text-gray-600 mb-4">Grow nitrogen-fixing plants like dhaincha, sunhemp, and cowpea,
+                    then incorporate into soil.</p>
+                <div class="bg-green-50 p-3 rounded-lg">
+                    <p class="text-sm text-green-800"><strong>Benefits:</strong> Adds 40-60 kg nitrogen per
+                        hectare, improves soil structure.</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="text-5xl mb-4 text-center">🐄</div>
+                <h4 class="text-xl font-semibold mb-3">Organic Fertilizers</h4>
+                <p class="text-gray-600 mb-4">Use farmyard manure, vermicompost, bone meal, and organic liquid
+                    fertilizers for plant nutrition.</p>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <p class="text-sm text-orange-800"><strong>Application:</strong> 10-15 tonnes FYM per
+                        hectare, 2-3 tonnes vermicompost.</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg">
+                <div class="text-5xl mb-4 text-center">💧</div>
+                <h4 class="text-xl font-semibold mb-3">Water Management</h4>
+                <p class="text-gray-600 mb-4">Efficient irrigation methods like drip irrigation and mulching to
+                    conserve water and prevent soil erosion.</p>
+                <div class="bg-blue-50 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800"><strong>Mulching:</strong> Use organic materials to retain
+                        moisture and suppress weeds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-8 rounded-xl shadow-lg mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-indigo-700">📜 Organic Certification Process</h3>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="text-center">
+                <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">1️⃣</span>
+                </div>
+                <h4 class="font-semibold mb-2">Application</h4>
+                <p class="text-sm text-gray-600">Submit application to certified agency with farm details and
+                    management plan</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">2️⃣</span>
+                </div>
+                <h4 class="font-semibold mb-2">Inspection</h4>
+                <p class="text-sm text-gray-600">Field inspection by certified inspector to verify organic
+                    practices</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">3️⃣</span>
+                </div>
+                <h4 class="font-semibold mb-2">Transition</h4>
+                <p class="text-sm text-gray-600">3-year transition period without synthetic chemicals before
+                    full certification</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">✅</span>
+                </div>
+                <h4 class="font-semibold mb-2">Certificate</h4>
+                <p class="text-sm text-gray-600">Receive organic certificate valid for 3 years with annual
+                    inspections</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8">
+        <h3 class="text-2xl font-bold mb-6 text-green-700">🏆 Success Stories</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gradient-to-r from-green-400 to-green-600 text-white p-6 rounded-xl shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="text-4xl mr-4">👨‍🌾</div>
+                    <div>
+                        <h4 class="text-xl font-bold">Rajesh Kumar, Punjab</h4>
+                        <p class="text-sm opacity-90">Organic Wheat Farmer</p>
+                    </div>
+                </div>
+                <p class="mb-4">"Switched to organic farming 5 years ago. My income increased by 50% due to
+                    premium prices and reduced input costs."</p>
+                <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                    <p class="text-sm"><strong>Achievement:</strong> 45 quintals/hectare organic wheat yield</p>
+                </div>
+            </div>
+            <div class="bg-gradient-to-r from-blue-400 to-blue-600 text-white p-6 rounded-xl shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="text-4xl mr-4">👩‍🌾</div>
+                    <div>
+                        <h4 class="text-xl font-bold">Sunita Devi, Haryana</h4>
+                        <p class="text-sm opacity-90">Organic Vegetable Grower</p>
+                    </div>
+                </div>
+                <p class="mb-4">"Organic vegetables fetch 40% higher prices. My family's health improved after
+                    stopping chemical use."</p>
+                <div class="bg-white bg-opacity-20 p-3 rounded-lg">
+                    <p class="text-sm"><strong>Achievement:</strong> Supplies to 5 organic stores in Delhi</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
